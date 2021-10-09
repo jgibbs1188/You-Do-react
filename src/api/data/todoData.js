@@ -10,4 +10,18 @@ const getTodos = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-export default getTodos;
+const createTodo = (obj) => new Promise((resolve, reject) => {
+  axios
+    .post(`${dbUrl}/todos.json`, obj)
+    .then((response) => {
+      const firebaseKey = response.data.name;
+      axios
+        .patch(`${dbUrl}/todos/${firebaseKey}.json`, { firebaseKey })
+        .then(() => {
+          getTodos().then(resolve);
+        });
+    })
+    .catch(reject);
+});
+
+export { getTodos, createTodo };
