@@ -8,7 +8,7 @@ const initialState = {
   uid: '',
 };
 
-export default function TodoForm({ obj, setTodos }) {
+export default function TodoForm({ obj, setTodos, setEditItem }) {
   const [formInput, setFormInput] = useState(initialState);
 
   useEffect(() => {
@@ -32,18 +32,19 @@ export default function TodoForm({ obj, setTodos }) {
   };
 
   const resetForm = () => {
-    setFormInput({ ...initialState });
+    setFormInput(initialState);
+    setEditItem({});
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.firebaseKey) {
-      updateTodo(formInput).then((todos) => {
+      updateTodo({ ...formInput }).then((todos) => {
         setTodos(todos);
         resetForm();
       });
     } else {
-      createTodo({ ...formInput }).then((todos) => {
+      createTodo({ ...formInput, date: new Date() }).then((todos) => {
         setTodos(todos);
         resetForm();
       });
@@ -65,7 +66,7 @@ export default function TodoForm({ obj, setTodos }) {
             required
           />
         </label>
-        <button type="submit">Submit</button>
+        <button type="submit">{obj.firebaseKey ? 'UPDATE' : 'SUBMIT'}</button>
       </form>
     </div>
   );
@@ -81,5 +82,5 @@ TodoForm.propTypes = {
     uid: PropTypes.string,
   }).isRequired,
   setTodos: PropTypes.func.isRequired,
-  // setEditItem: PropTypes.func.isRequired,
+  setEditItem: PropTypes.func.isRequired,
 };

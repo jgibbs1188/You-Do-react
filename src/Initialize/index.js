@@ -13,7 +13,7 @@ function Initialize() {
 
   return (
     <>
-      <TodoForm obj={editItem} setTodos={setTodos} />
+      <TodoForm obj={editItem} setTodos={setTodos} setEditItem={setEditItem} />
       {todos.map((todo) => (
         <Todo
           key={todo.firebaseKey}
