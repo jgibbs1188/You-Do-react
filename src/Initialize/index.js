@@ -13,6 +13,7 @@ function Initialize() {
 
   return (
     <>
+      <h1>You-Do</h1>
       <TodoForm obj={editItem} setTodos={setTodos} setEditItem={setEditItem} />
       {todos.map((todo) => (
         <Todo

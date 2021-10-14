@@ -1,7 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Alert } from 'reactstrap';
+import styled from 'styled-components';
+import { Alert, Button } from 'reactstrap';
 import { deleteTodo, updateTodo } from '../api/data/todoData';
+
+const TodoStyling = styled.div`
+  margin: 10px 20%;
+  margin-top: 3rem;
+  background-color: white;
+  width: 60%;
+  border-radius: 0.25rem;
+
+  div {
+    flex-grow: 1;
+  }
+  h5 {
+    flex-grow: 2;
+    margin-left: 20px;
+  }
+`;
+
+const Div = styled.div`
+  display: flex;
+  flex-grow: 3;
+  justify-content: flex-end;
+`;
 
 export default function Todo({ taco, setTodos, setEditItem }) {
   const handleClick = (method) => {
@@ -15,30 +38,34 @@ export default function Todo({ taco, setTodos, setEditItem }) {
 
   return (
     <>
-      <Alert color="light">
-        <button
-          onClick={() => handleClick('complete')}
-          className="btn btn-success"
-          type="button"
-        >
-          COMPLETE
-        </button>
-        {taco.name}
-        <button
-          onClick={() => setEditItem(taco)}
-          className="btn btn-info"
-          type="button"
-        >
-          EDIT
-        </button>
-        <button
-          onClick={() => handleClick('delete')}
-          className="btn btn-danger"
-          type="button"
-        >
-          DELETE
-        </button>
-      </Alert>
+      <TodoStyling>
+        <Alert color="light">
+          <Button
+            onClick={() => handleClick('complete')}
+            className="btn btn-success"
+            type="button"
+          >
+            COMPLETE
+          </Button>
+          {taco.name}
+          <Div>
+            <Button
+              onClick={() => setEditItem(taco)}
+              className="btn btn-info"
+              type="button"
+            >
+              EDIT
+            </Button>
+            <Button
+              onClick={() => handleClick('delete')}
+              className="btn btn-danger"
+              type="button"
+            >
+              DELETE
+            </Button>
+          </Div>
+        </Alert>
+      </TodoStyling>
     </>
   );
 }

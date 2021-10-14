@@ -5,7 +5,7 @@ const dbUrl = firebaseConfig.databaseURL;
 
 const getTodos = () => new Promise((resolve, reject) => {
   axios
-    .get(`${dbUrl}/todos.json`)
+    .get(`${dbUrl}/todos.json?orderBy="complete"&equalTo=false`)
     .then((response) => resolve(Object.values(response.data)))
     .catch(reject);
 });
