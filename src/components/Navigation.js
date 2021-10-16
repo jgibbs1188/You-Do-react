@@ -22,6 +22,13 @@ export default function Navigation() {
         >
           View Completed
         </button>
+        <button
+          onClick={() => history.push('/alltodos')}
+          type="button"
+          className="btn btn-light border border-dark"
+        >
+          View All
+        </button>
       </ButtonGroup>
     </div>
   );

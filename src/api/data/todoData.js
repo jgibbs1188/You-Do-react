@@ -23,6 +23,13 @@ const deleteCompletedTodo = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getAllTodos = () => new Promise((resolve, reject) => {
+  axios
+    .get(`${dbUrl}/todos.json`)
+    .then((response) => resolve(Object.values(response.data)))
+    .catch(reject);
+});
+
 const createTodo = (obj) => new Promise((resolve, reject) => {
   axios
     .post(`${dbUrl}/todos.json`, obj)
@@ -58,4 +65,5 @@ export {
   updateTodo,
   getCompletedTodos,
   deleteCompletedTodo,
+  getAllTodos,
 };
