@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Alert, Button } from 'reactstrap';
 import { deleteTodo, updateTodo } from '../api/data/todoData';
 
-const TodoStyling = styled.div`
+export const TodoStyling = styled.div`
   margin: 10px 20%;
   margin-top: 3rem;
   background-color: white;
@@ -26,7 +26,7 @@ const Div = styled.div`
   justify-content: flex-end;
 `;
 
-export default function Todo({ taco, setTodos, setEditItem }) {
+export function Todo({ taco, setTodos, setEditItem }) {
   const handleClick = (method) => {
     if (method === 'delete') {
       deleteTodo(taco.firebaseKey).then(setTodos);

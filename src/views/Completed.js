@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { deleteCompletedTodo, getCompletedTodos } from '../api/data/todoData';
+import { TodoStyling } from '../components/Todo';
 
 export default function Completed() {
   const [completedTodos, setCompletedTodos] = useState([]);
@@ -14,22 +15,20 @@ export default function Completed() {
 
   return (
     <div>
-      {completedTodos.map((completedTodo) => (
-        <div
-          key={completedTodo.firebaseKey}
-          className="d-flex justify-content-between alert alert-light"
-          role="alert"
-        >
-          {completedTodo.name}
-          <button
-            onClick={() => handleClick(completedTodo.firebaseKey)}
-            className="btn btn-danger"
-            type="button"
-          >
-            DELETE
-          </button>
-        </div>
-      ))}
+      <TodoStyling>
+        {completedTodos.map((completedTodo) => (
+          <div key={completedTodo.firebaseKey} role="alert">
+            {completedTodo.name}
+            <button
+              onClick={() => handleClick(completedTodo.firebaseKey)}
+              className="btn btn-danger"
+              type="button"
+            >
+              DELETE
+            </button>
+          </div>
+        ))}
+      </TodoStyling>
     </div>
   );
 }
