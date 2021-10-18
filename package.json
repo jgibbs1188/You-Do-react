@@ -1,5 +1,5 @@
 {
-  "name": "react-template-2021",
+  "name": "you-do-react",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -7,7 +7,7 @@
     "@popperjs/core": "^2.9.3",
     "axios": "^0.21.1",
     "bootstrap": "^5.1.0",
-    "firebase": "^8.2.0",
+    "firebase": "^8.10.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -15,6 +15,7 @@
     "react-scripts": "4.0.3",
     "reactstrap": "^8.10.0",
     "sass": "^1.42.1",
+    "styled-components": "^5.3.1",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
