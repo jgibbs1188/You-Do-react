@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { Button } from 'reactstrap';
 import { createTodo, updateTodo } from '../api/data/todoData';
@@ -28,6 +29,7 @@ const FormStyle = styled.form`
 
 export default function TodoForm({ obj, setTodos, setEditItem }) {
   const [formInput, setFormInput] = useState(initialState);
+  const history = useHistory();
 
   useEffect(() => {
     if (obj.firebaseKey) {
@@ -66,6 +68,7 @@ export default function TodoForm({ obj, setTodos, setEditItem }) {
       createTodo({ ...formInput, date: new Date() }).then((todos) => {
         setTodos(todos);
         resetForm();
+        history.push('/');
       });
     }
   };
